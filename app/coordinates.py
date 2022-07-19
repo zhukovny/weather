@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 import geocoder
 
-from exceptions import CantGetCoordinates
+from app.exceptions import CantGetCoordinates
 
 
 @dataclass(frozen=True)
@@ -14,9 +14,9 @@ def get_current_coordinates() -> Coordinates:
     try:
         result = geocoder.ip('me')
     except ConnectionError:
-        raise CantGetCoordinates("Can't get coordinates. Connection error")
+        raise CantGetCoordinates
 
     if not result.ok:
-        raise CantGetCoordinates(f"Can't get coordinates. {result.json['status']}")
+        raise CantGetCoordinates
 
     return Coordinates(*result.latlng)
