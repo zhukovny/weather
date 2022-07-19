@@ -7,6 +7,7 @@ name = "pypi"
 geocoder = "*"
 
 [dev-packages]
+mypy = "*"
 
 [requires]
 python_version = "3.9"
